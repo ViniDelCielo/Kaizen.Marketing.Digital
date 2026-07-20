@@ -450,7 +450,10 @@
   }
 
   portfolioButtons.forEach((btn) => {
-    btn.addEventListener("click", () => openPortfolio(btn.dataset.portfolio));
+    btn.addEventListener("click", () => {
+      if (btn.disabled || btn.getAttribute("aria-disabled") === "true") return;
+      openPortfolio(btn.dataset.portfolio);
+    });
   });
 
   if (portfolioModal) {

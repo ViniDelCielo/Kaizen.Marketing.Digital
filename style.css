@@ -1000,6 +1000,21 @@ button { font-family: inherit; cursor: pointer; }
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
 }
 
+.content-cell:disabled,
+.content-cell[aria-disabled="true"] {
+  cursor: default;
+  pointer-events: none;
+  opacity: 1;
+}
+
+.content-cell:disabled:hover,
+.content-cell[aria-disabled="true"]:hover {
+  transform: none;
+  border-color: rgba(229, 192, 96, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: none;
+}
+
 .content-cell:focus-visible {
   outline: 2px solid var(--dourado);
   outline-offset: 3px;
