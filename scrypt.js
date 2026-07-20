@@ -70,6 +70,28 @@
     });
   });
 
+  /* Celulares no mobile: começa com o do meio centralizado */
+  function centerPhonesCarousel() {
+    const row = document.querySelector(".phones-row");
+    const center = document.querySelector(".phone-figure-center");
+    if (!row || !center || window.innerWidth > 768) return;
+
+    const rowRect = row.getBoundingClientRect();
+    const centerRect = center.getBoundingClientRect();
+    const delta =
+      centerRect.left +
+      centerRect.width / 2 -
+      (rowRect.left + rowRect.width / 2);
+
+    row.scrollLeft += delta;
+  }
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(centerPhonesCarousel);
+  });
+  window.addEventListener("load", centerPhonesCarousel);
+  window.addEventListener("resize", centerPhonesCarousel);
+
   /* FAQ accordion: só 1 aberto; a linha inteira empurra as de baixo */
   const faqList = document.querySelector(".faq-list");
   if (faqList) {

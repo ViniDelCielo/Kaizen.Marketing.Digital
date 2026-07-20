@@ -2008,15 +2008,34 @@ summary:focus-visible {
   }
 
   .phones-row {
+    --phone-center-w: 188px;
     gap: 10px;
     max-width: 100%;
     align-items: flex-end;
     overflow-x: auto;
-    padding-bottom: 8px;
+    overflow-y: hidden;
+    padding-bottom: 10px;
     scroll-snap-type: x mandatory;
+    scroll-padding-inline: calc(50% - (var(--phone-center-w) / 2));
     -webkit-overflow-scrolling: touch;
     justify-content: flex-start;
-    padding-inline: 4px;
+    padding-inline: calc(50% - (var(--phone-center-w) / 2));
+    scrollbar-width: thin;
+    scrollbar-color: var(--dourado) rgba(255, 255, 255, 0.08);
+  }
+
+  .phones-row::-webkit-scrollbar {
+    height: 5px;
+  }
+
+  .phones-row::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+  }
+
+  .phones-row::-webkit-scrollbar-thumb {
+    background: var(--grad-gold);
+    border-radius: 999px;
   }
 
   .phone-figure {
@@ -2030,7 +2049,7 @@ summary:focus-visible {
   }
 
   .phone-center {
-    width: 188px;
+    width: var(--phone-center-w);
     height: 380px;
   }
 
@@ -2054,6 +2073,7 @@ summary:focus-visible {
 
 @media (max-width: 420px) {
   .phones-row {
+    --phone-center-w: 170px;
     gap: 12px;
   }
 
@@ -2064,7 +2084,6 @@ summary:focus-visible {
   }
 
   .phone-center {
-    width: 170px;
     height: 340px;
     padding: 8px;
   }
